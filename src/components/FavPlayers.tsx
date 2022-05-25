@@ -19,10 +19,18 @@ const FavPlayers: React.FunctionComponent = () =>{
     const favs = useStore(state => state.favs);
     const [bgcolor, setBgColor] = useState(COLORS.DEFAULT);
 
+    /**
+     * @see
+     * this way of implementation, might cause performances issues because of multiple re-renders
+     */
     const buttonTemplate = (rowData: Player_interface) => {
         return <Button label="" icon="pi pi-trash" iconPos="right" onClick={() => remove(rowData.id)}/>;
     }
 
+    /**
+     * @see
+     * seems like a duplicated code, there is a better way to implement
+     */
     const headerTemplate = () => {
         return (
             <div className="flex justify-content-end">
@@ -33,6 +41,10 @@ const FavPlayers: React.FunctionComponent = () =>{
             </div>)
     }
 
+    /**
+     * @see
+     * every rerender of the component it will run this as well...
+     */
     const header = headerTemplate();
 
     return (

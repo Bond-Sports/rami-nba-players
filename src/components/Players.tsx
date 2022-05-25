@@ -11,12 +11,21 @@ import useStore from '../store/store'
 
 const Players: React.FunctionComponent = () => {
     const [loading, setLoading] = useState(false);
+    /**
+     * @see
+     * why there is no type here?
+     */
     const [players, setPlayers] = useState([]);
     const [allPlayers, setAllPlayers] = useState([]);
     const add = useStore(state => state.add);
 
+
     // when component mounts
     useEffect(() => {
+        /**
+         * @see
+         * weird implementation, why runing function with empty "then"
+         */
         const fetchPlayers = async () => {
             setLoading(true);
 
